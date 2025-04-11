@@ -51,13 +51,46 @@ The full form of an ARM is an advanced reduced instruction set computer (RISC) m
 
 
 ## STM 32 CUBE PROGRAM :
+```
+#include "main.h"
+#include <stdbool.h>
+void push_button();
+bool button_status;
+int main(void)
+ 
+  {
+   HAL-Init();
+   System clock-config();
+   MX_GPIO-Init();
+   while(1){
+	  push_button();
+   }
+  }
+  
 
-
-
+void push_button(){
+	button_status=HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_13);
+	if(button_status==1)
+	{
+		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_SET);
+		HAL_Delay(500);
+		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_RESET);
+		HAL_Delay(500);
+	}
+	else
+	{
+		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_RESET);
+		
+	}
+}
+```
 ## Output  :
+ ![432580816-5c0f5cfe-bb22-4264-9b90-6f95fd33a8e0](https://github.com/user-attachments/assets/c7f3b447-f61e-4c18-8d59-e7761c481e2d)
  
+![432580876-eb8c073f-5d97-4dca-8bd8-db9c6daffeb2](https://github.com/user-attachments/assets/02a59ff8-272d-492a-9318-2984c4ba7e51)
+
 ## layout of the circuit 
- 
- 
+ ![432580928-940d5acb-6c75-426b-8d00-a0f72f5a6715](https://github.com/user-attachments/assets/af7be253-0f57-4d39-89a3-4eef3927ba41)
+
 ## Result :
 Interfacing a digital Input (Pushbutton ) with ARM microcontroller based IOT development is executed and the results are verified.
